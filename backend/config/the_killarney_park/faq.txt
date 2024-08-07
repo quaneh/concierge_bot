@@ -1,0 +1,8 @@
+Question: What time is check-out?
+Answer: 11.30am
+
+Question: What time does the pool open?
+Answer: From 7am to 11pm
+
+Question: Does the restaurant have vegetarian options.
+Answer: The restaurant serves many vegan and vegerarian options and the menu changes daily.

@@ -1,0 +1,8 @@
+Question: What time is check-out?
+Answer: 11am
+
+Question: What time does the pool open?
+Answer: From 8am to 10pm
+
+Question: Does the restaurant have vegetarian options.
+Answer: Currently the restaurant has a number of vegetarian specials such as a Polenta and Courgette terrine.
