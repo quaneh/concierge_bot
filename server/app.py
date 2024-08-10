@@ -1,27 +1,26 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 from langchain.prompts import ChatPromptTemplate
-from langchain.chat_models import ChatOpenAI
+from langchain_openai import ChatOpenAI
 from langchain.chains import LLMChain
 import os
 import yaml
 
 app = Flask(__name__)
-
-# Set your OpenAI API key
-os.environ["OPENAI_API_KEY"] = ""
+CORS(app)
 
 # Initialize the OpenAI chat model (you can use "gpt-3.5-turbo" or "gpt-4")
-chat_model = ChatOpenAI(model_name="gpt-4o", temperature=0.7)
+llm = ChatOpenAI(model_name="gpt-4o", temperature=0.7)
 
 # Load the prompt template
 with open('prompts/prompt.txt', 'r') as file:
     template = file.read()
 
 # Define the chat prompt template
-chat_prompt = ChatPromptTemplate.from_template(template)
+prompt = ChatPromptTemplate.from_template(template)
 
 # Create the LLMChain with the chat model
-chain = LLMChain(llm=chat_model, prompt=chat_prompt)
+chain = prompt | llm
 
 @app.route('/chat', methods=['POST'])
 def chat():
@@ -52,9 +51,9 @@ def chat():
         events = file.read()
 
     # Generate the response using the LLMChain
-    response = chain.run(tenant_name=tenant_name, guest_name=guest_name, faq=faq, events=events, guest_message=guest_message)
+    response = chain.invoke(input={"tenant_name":tenant_name, "guest_name":guest_name, "faq":faq, "events":events, "guest_message":guest_message})
 
-    return jsonify({"response": response})
+    return jsonify({"response": response.content})
 
 @app.route('/tenant/<tenant_id>', methods=['GET'])
 def get_tenant_name(tenant_id):

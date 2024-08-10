@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "server"
+version = "0.1.0"
+description = ""
+authors = ["quaneh <66668208+quaneh@users.noreply.github.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+langchain = "^0.2.12"
+langchain-community = "^0.2.11"
+flask = "^3.0.3"
+openai = "^1.40.3"
+langchain-openai = "^0.1.20"
+flask-cors = "^4.0.1"
+gunicorn = "^22.0.0"
+poetry-plugin-export = "^1.8.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

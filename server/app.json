@@ -1,0 +1,20 @@
+{
+  "name": "Start on Heroku: Python",
+  "description": "The backend server for my hotel concierge all",
+  "image": "heroku/python",
+  "repository": "https://github.com/quaneh/concierge_bot",
+  "keywords": ["python", "flask"],
+  "env": {
+    "OPENAI_API_KEY": {
+      "description": "The secret key for the openai api.",
+      "generator": "secret"
+    }
+  },
+  "environments": {
+    "test": {
+      "scripts": {
+        "test": "./app.py test --debug-mode"
+      }
+    }
+  }
+}
